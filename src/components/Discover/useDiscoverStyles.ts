@@ -7,6 +7,10 @@ const useDiscoverStyles = makeStyles(theme =>
       borderBottomLeftRadius: 60,
       borderBottomRightRadius: 60,
 
+      "& h2": {
+        width: "50%"
+      },
+
       "& .MuiTypography-subtitle1": {
         position: "relative",
 

@@ -1,0 +1,34 @@
+type Query {
+  breeds(filter: BreedFilterInput, limit: Int, skip: Int): BreedConnection!
+  breed(id: ID!): Breed!
+}
+
+input BreedFilterInput {
+  id: ID!
+  name: String!
+  origin: String!
+}
+
+type BreedConnection {
+  hasMore: Boolean!
+  cursor: ID!
+  breeds: [Breed!]!
+}
+
+type Breed {
+  id: ID!
+  name: String!
+  description: String!
+  temperature: String!
+  origin: String!
+  lifeSpan: Int!
+  adaptability: Int!
+  affectionLevel: Int!
+  childFriendly: Int!
+  grooming: Int!
+  intelligence: Int!
+  healthIssues: Int!
+  socialNeeds: Int!
+  strangerFriendly: Int!
+  photos: [String!]!
+}
