@@ -15,33 +15,19 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query';
-  breeds: BreedConnection;
+  breeds: Array<Breed>;
   breed: Breed;
 };
 
 
 export type QueryBreedsArgs = {
-  filter?: Maybe<BreedFilterInput>;
   limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
+  page?: Maybe<Scalars['Int']>;
 };
 
 
 export type QueryBreedArgs = {
-  id: Scalars['ID'];
-};
-
-export type BreedFilterInput = {
-  id: Scalars['ID'];
   name: Scalars['String'];
-  origin: Scalars['String'];
-};
-
-export type BreedConnection = {
-  __typename?: 'BreedConnection';
-  hasMore: Scalars['Boolean'];
-  cursor: Scalars['ID'];
-  breeds: Array<Breed>;
 };
 
 export type Breed = {
@@ -51,7 +37,7 @@ export type Breed = {
   description: Scalars['String'];
   temperature: Scalars['String'];
   origin: Scalars['String'];
-  lifeSpan: Scalars['Int'];
+  lifeSpan: Scalars['String'];
   adaptability: Scalars['Int'];
   affectionLevel: Scalars['Int'];
   childFriendly: Scalars['Int'];
@@ -60,7 +46,16 @@ export type Breed = {
   healthIssues: Scalars['Int'];
   socialNeeds: Scalars['Int'];
   strangerFriendly: Scalars['Int'];
-  photos: Array<Scalars['String']>;
+  image: Scalars['String'];
+  photos: Array<Image>;
+};
+
+export type Image = {
+  __typename?: 'Image';
+  id: Scalars['ID'];
+  height: Scalars['Int'];
+  width: Scalars['Int'];
+  url: Scalars['String'];
 };
 
 
@@ -143,36 +138,27 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 export type ResolversTypes = {
   Query: ResolverTypeWrapper<{}>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
-  ID: ResolverTypeWrapper<Scalars['ID']>;
-  BreedFilterInput: BreedFilterInput;
   String: ResolverTypeWrapper<Scalars['String']>;
-  BreedConnection: ResolverTypeWrapper<BreedConnection>;
-  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   Breed: ResolverTypeWrapper<Breed>;
+  ID: ResolverTypeWrapper<Scalars['ID']>;
+  Image: ResolverTypeWrapper<Image>;
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Query: {};
   Int: Scalars['Int'];
-  ID: Scalars['ID'];
-  BreedFilterInput: BreedFilterInput;
   String: Scalars['String'];
-  BreedConnection: BreedConnection;
-  Boolean: Scalars['Boolean'];
   Breed: Breed;
+  ID: Scalars['ID'];
+  Image: Image;
+  Boolean: Scalars['Boolean'];
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  breeds?: Resolver<ResolversTypes['BreedConnection'], ParentType, ContextType, RequireFields<QueryBreedsArgs, never>>;
-  breed?: Resolver<ResolversTypes['Breed'], ParentType, ContextType, RequireFields<QueryBreedArgs, 'id'>>;
-};
-
-export type BreedConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['BreedConnection'] = ResolversParentTypes['BreedConnection']> = {
-  hasMore?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
-  cursor?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  breeds?: Resolver<Array<ResolversTypes['Breed']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+  breeds?: Resolver<Array<ResolversTypes['Breed']>, ParentType, ContextType, RequireFields<QueryBreedsArgs, never>>;
+  breed?: Resolver<ResolversTypes['Breed'], ParentType, ContextType, RequireFields<QueryBreedArgs, 'name'>>;
 };
 
 export type BreedResolvers<ContextType = any, ParentType extends ResolversParentTypes['Breed'] = ResolversParentTypes['Breed']> = {
@@ -181,7 +167,7 @@ export type BreedResolvers<ContextType = any, ParentType extends ResolversParent
   description?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   temperature?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   origin?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  lifeSpan?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  lifeSpan?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   adaptability?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   affectionLevel?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   childFriendly?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -190,14 +176,23 @@ export type BreedResolvers<ContextType = any, ParentType extends ResolversParent
   healthIssues?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   socialNeeds?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   strangerFriendly?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  photos?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType>;
+  image?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  photos?: Resolver<Array<ResolversTypes['Image']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type ImageResolvers<ContextType = any, ParentType extends ResolversParentTypes['Image'] = ResolversParentTypes['Image']> = {
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  height?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  width?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  url?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {
   Query?: QueryResolvers<ContextType>;
-  BreedConnection?: BreedConnectionResolvers<ContextType>;
   Breed?: BreedResolvers<ContextType>;
+  Image?: ImageResolvers<ContextType>;
 };
 
 

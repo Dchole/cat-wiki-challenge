@@ -1,23 +1,32 @@
-import { ApolloServer, gql } from "apollo-server-micro";
+import {
+  addResolversToSchema,
+  ApolloServer,
+  GraphQLFileLoader,
+  loadSchemaSync
+} from "apollo-server-micro";
+import CatsAPI from "@graphql/datasource";
+import Query from "@graphql/resolvers/Query";
+import Breed from "@graphql/resolvers/Breed";
+import { Resolvers } from "@graphql/types/__generated__";
 
-const typeDefs = gql`
-  type Query {
-    users: [User!]!
-  }
-  type User {
-    name: String
-  }
-`;
+const schema = loadSchemaSync("./src/graphql/schema.gql", {
+  loaders: [new GraphQLFileLoader()]
+});
 
-const resolvers = {
-  Query: {
-    users(parent, args, context) {
-      return [{ name: "Nextjs" }];
-    }
-  }
+const resolvers: Resolvers = {
+  Query,
+  Breed
 };
 
-const apolloServer = new ApolloServer({ typeDefs, resolvers });
+const schemaWithResolvers = addResolversToSchema({
+  schema,
+  resolvers
+});
+
+const apolloServer = new ApolloServer({
+  schema: schemaWithResolvers,
+  dataSources: () => ({ catsAPI: new CatsAPI() })
+});
 
 export const config = {
   api: {
