@@ -1,5 +1,5 @@
 import { TContext } from "apollo/types/context";
-import { QueryResolvers } from "apollo/types/__generated__";
+import type { QueryResolvers } from "../types/generated/server";
 
 const Query: QueryResolvers<TContext> = {
   breed: async (_, { name }, { dataSources: { catsAPI } }) => {

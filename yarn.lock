@@ -656,6 +656,14 @@
     "@graphql-tools/utils" "^6"
     tslib "~2.0.1"
 
+"@graphql-codegen/fragment-matcher@2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/fragment-matcher/-/fragment-matcher-2.0.1.tgz#be1bdb7590952304639b4c58dc2074e14e1663c0"
+  integrity sha512-CUHmeunK2xz9P5XBOPYeJwuQCa/7YnwmXJzuLMs+6fKa43KlFTTmpzYHh4p4Hx2lHAsZUpuWSD9/KSptvSG4aA==
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "^1.18.2"
+    tslib "~2.0.1"
+
 "@graphql-codegen/introspection@1.18.1":
   version "1.18.1"
   resolved "https://registry.yarnpkg.com/@graphql-codegen/introspection/-/introspection-1.18.1.tgz#fe3f781b2b60cc69a0cf535a3cfe912c71e32770"
@@ -681,6 +689,29 @@
     tslib "~2.0.1"
     upper-case "2.0.1"
 
+"@graphql-codegen/typescript-operations@1.17.13":
+  version "1.17.13"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-operations/-/typescript-operations-1.17.13.tgz#a5b08c1573b9507ca5a9e66e795aecc40ddc5305"
+  integrity sha512-Wm/S4pmPy+KPvFVpygNwC4pd9zKtGIwnS+2rlMUBZVSpv4fxjX2YDvYHP/gucck+SiS0RRxB7hW65bTwCns46g==
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "^1.18.2"
+    "@graphql-codegen/typescript" "^1.18.1"
+    "@graphql-codegen/visitor-plugin-common" "^1.17.22"
+    auto-bind "~4.0.0"
+    tslib "~2.0.1"
+
+"@graphql-codegen/typescript-react-apollo@2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-react-apollo/-/typescript-react-apollo-2.2.1.tgz#4791e2b47478d8c1d5c9f8a4460156176cb185bc"
+  integrity sha512-xOOB0avE6w7UpuEZ56eNGkD5zek1+Z2x2/F9/f4AU2dUiRNbNmpYOzuiOg4nz9eA5DBXX7fS4TkLwyqJ3sF77A==
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "^1.18.2"
+    "@graphql-codegen/visitor-plugin-common" "^1.17.20"
+    auto-bind "~4.0.0"
+    camel-case "^4.1.1"
+    pascal-case "^3.1.1"
+    tslib "~2.0.1"
+
 "@graphql-codegen/typescript-resolvers@1.18.1":
   version "1.18.1"
   resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-resolvers/-/typescript-resolvers-1.18.1.tgz#ee63c4b8243d002d617b3df17752f3ddacf5916a"
@@ -693,7 +724,7 @@
     auto-bind "~4.0.0"
     tslib "~2.0.1"
 
-"@graphql-codegen/typescript@1.20.0", "@graphql-codegen/typescript@^1.19.0":
+"@graphql-codegen/typescript@1.20.0", "@graphql-codegen/typescript@^1.18.1", "@graphql-codegen/typescript@^1.19.0":
   version "1.20.0"
   resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript/-/typescript-1.20.0.tgz#f9a17b869e5691276965a56c7a1efe4eb938b6e7"
   integrity sha512-7xW+n0USNpr6iZ4Et17ZbPzBLNe/LrSgrQ6V/8Mlgp1reQWAZtoVw13Oq4GnxHCzAYio8nFindLl+emW9ZBeew==
@@ -703,7 +734,7 @@
     auto-bind "~4.0.0"
     tslib "~2.0.1"
 
-"@graphql-codegen/visitor-plugin-common@^1.17.22", "@graphql-codegen/visitor-plugin-common@^1.18.0":
+"@graphql-codegen/visitor-plugin-common@^1.17.20", "@graphql-codegen/visitor-plugin-common@^1.17.22", "@graphql-codegen/visitor-plugin-common@^1.18.0":
   version "1.18.0"
   resolved "https://registry.yarnpkg.com/@graphql-codegen/visitor-plugin-common/-/visitor-plugin-common-1.18.0.tgz#f4366ec1093c01e752e85f8bd30d09c58b1d6951"
   integrity sha512-OR/Cm9nVaqMLe94Ski60UDhaAf/4+QeV/CQRYrCmxFzEsm03U41VplcNgJBXIAB3EgP/LEIZtgkRc1H4N9u9+Q==
@@ -2541,7 +2572,7 @@ camel-case@4.1.1:
     pascal-case "^3.1.1"
     tslib "^1.10.0"
 
-camel-case@4.1.2, camel-case@^4.1.2:
+camel-case@4.1.2, camel-case@^4.1.1, camel-case@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/camel-case/-/camel-case-4.1.2.tgz#9728072a954f805228225a6deea6b38461e1bd5a"
   integrity sha512-gxGWBrTT1JuMx6R+o5PTXMmUnhnVzLQ9SNutD4YqKtI6ap897t3tKECYla6gCWEkplXnlNybEkZg9GEGxKFCgw==
@@ -3182,6 +3213,13 @@ deep-extend@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.6.0.tgz#c4fa7c95404a17a9c3e8ca7e1537312b736330ac"
   integrity sha512-LOHxIOaPYdHlJRtCQfDIVZtfw/ufM8+rVj649RIHzcm/vGwQRXFt6OPqIFWsm2XEMrNIEtWR64sY1LEKD2vAOA==
+
+deep-merge@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/deep-merge/-/deep-merge-1.0.0.tgz#0906cc56c3a93099ae093fe995589eefe38a0e95"
+  integrity sha1-CQbMVsOpMJmuCT/plVie7+OKDpU=
+  dependencies:
+    xtend "~1.0.3"
 
 defer-to-connect@^1.0.1:
   version "1.1.3"
@@ -7943,6 +7981,11 @@ xtend@^4.0.0, xtend@~4.0.1:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.2.tgz#bb72779f5fa465186b1f438f674fa347fdb5db54"
   integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
+
+xtend@~1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/xtend/-/xtend-1.0.3.tgz#3f5d937353cced8e085399a563fdb22541c2960a"
+  integrity sha1-P12Tc1PM7Y4IU5mlY/2yJUHClgo=
 
 y18n@^4.0.0:
   version "4.0.1"

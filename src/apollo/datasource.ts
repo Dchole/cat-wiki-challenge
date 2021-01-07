@@ -1,5 +1,5 @@
 import { RequestOptions, RESTDataSource } from "apollo-datasource-rest";
-import type { Breed, Image } from "./types/__generated__";
+import type { Breed, Image } from "./types/generated/server";
 
 class CatsAPI extends RESTDataSource {
   constructor() {

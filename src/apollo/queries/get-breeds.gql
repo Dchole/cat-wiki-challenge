@@ -1,0 +1,7 @@
+query GetBreeds($limit: Int, $page: Int) {
+  breeds(limit: $limit, page: $page) {
+    id
+    name
+    image
+  }
+}

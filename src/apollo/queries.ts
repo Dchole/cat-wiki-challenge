@@ -11,3 +11,13 @@ export const GET_BREED = gql`
     }
   }
 `;
+
+export const GET_BREEDS = gql`
+  query getBreeds($limit: Int, $page: Int) {
+    breeds(limit: $limit, page: $page) {
+      id
+      name
+      image
+    }
+  }
+`;

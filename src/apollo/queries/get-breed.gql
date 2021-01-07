@@ -1,0 +1,13 @@
+query GetBreed($name: String!) {
+  breed(name: $name) {
+    id
+    name
+    image
+    description
+    temperature
+    origin
+    photos {
+      url
+    }
+  }
+}
