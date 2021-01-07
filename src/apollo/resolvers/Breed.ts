@@ -1,5 +1,5 @@
-import { TContext } from "@graphql/types/context";
-import { BreedResolvers } from "@graphql/types/__generated__";
+import { TContext } from "apollo/types/context";
+import { BreedResolvers } from "apollo/types/__generated__";
 
 const Breed: BreedResolvers<TContext> = {
   image: async (breed, __, { dataSources: { catsAPI } }) => {

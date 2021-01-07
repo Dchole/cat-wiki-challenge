@@ -1,4 +1,4 @@
-import CatsAPI from "@graphql/datasource";
+import CatsAPI from "apollo/datasource";
 
 export type TContext = {
   dataSources: {

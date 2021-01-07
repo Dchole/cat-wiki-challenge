@@ -12,8 +12,6 @@ class CatsAPI extends RESTDataSource {
   }
 
   breedReducer(breed: Record<string, any>) {
-    console.log(breed);
-
     return {
       id: breed.id,
       name: breed.name,

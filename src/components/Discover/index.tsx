@@ -3,7 +3,7 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import ArrowRightIcon from "@material-ui/icons/ArrowRightAlt";
-import Link from "@components/Link";
+import Link from "@/components/Link";
 import useDiscoverStyles from "./useDiscoverStyles";
 
 const Discover = () => {

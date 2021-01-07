@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Box from "@material-ui/core/Box";
-import Link from "@components/Link";
+import Link from "@/components/Link";
 import Typography from "@material-ui/core/Typography";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import useBriefStyles from "./useBriefStyles";
