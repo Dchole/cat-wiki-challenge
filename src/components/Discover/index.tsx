@@ -5,11 +5,13 @@ import Grid from "@material-ui/core/Grid";
 import ArrowRightIcon from "@material-ui/icons/ArrowRightAlt";
 import Link from "@/components/Link";
 import useDiscoverStyles from "./useDiscoverStyles";
-import { useGetBreedsQuery } from "@/apollo/types/generated/client";
+import { Sort, useGetBreedsQuery } from "@/apollo/types/generated/client";
 
 const Discover = () => {
   const classes = useDiscoverStyles();
-  const { data } = useGetBreedsQuery({ variables: { limit: 4 } });
+  const { data } = useGetBreedsQuery({
+    variables: { limit: 4, sortBy: Sort["Popular"] }
+  });
 
   return (
     <Box

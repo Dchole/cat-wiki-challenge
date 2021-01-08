@@ -5,8 +5,8 @@ import {
   InMemoryCache,
   NormalizedCacheObject
 } from "@apollo/client";
-import merge from "deep-merge";
 import CatsAPI from "./datasources/cats-api";
+import { Db } from "mongodb";
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
@@ -14,14 +14,19 @@ function createIsomorphLink() {
   if (typeof window === "undefined") {
     const { SchemaLink } = require("@apollo/client/link/schema");
 
+    const database = require("@/lib/database").default;
+    const PopularBreeds = require("./datasources/popular-breeds").default;
     const schema = require("./schema").default;
     const { apolloServer } = require("pages/api/graphql");
 
     return new SchemaLink({
       schema,
-      context: () => {
+      context: async () => {
+        const db: Db = await database();
+
         const dataSources = {
-          catsAPI: new CatsAPI()
+          catsAPI: new CatsAPI(),
+          popularBreeds: new PopularBreeds(db.collection("popular_breeds"))
         };
 
         // Assuming `dataSources` exists as an object map at this point.

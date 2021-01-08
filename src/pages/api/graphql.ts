@@ -1,16 +1,22 @@
 import { ApolloServer } from "apollo-server-micro";
+import { Db } from "mongodb";
 import CatsAPI from "@/apollo/datasources/cats-api";
 import schemaWithResolvers from "apollo/schema";
 import PopularBreeds from "@/apollo/datasources/popular-breeds";
-import db, { client } from "@/lib/database";
+import database from "@/lib/database";
 
-db();
+let db: Db;
 
 export const apolloServer = new ApolloServer({
   schema: schemaWithResolvers,
+  context: async () => {
+    db = await database();
+
+    return { db };
+  },
   dataSources: () => ({
     catsAPI: new CatsAPI(),
-    popularBreeds: new PopularBreeds(client.db().collection("popular_breeds"))
+    popularBreeds: new PopularBreeds(db.collection("popular_breeds"))
   })
 });
 

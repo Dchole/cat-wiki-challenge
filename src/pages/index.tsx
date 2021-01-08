@@ -31,13 +31,15 @@ export const getStaticProps: GetStaticProps = async () => {
   await apolloClient.query({
     query: GET_BREEDS,
     variables: {
-      limit: 4
+      limit: 4,
+      sortBy: "POPULAR"
     }
   });
 
   return {
     props: {
       initialApolloState: apolloClient.cache.extract()
-    }
+    },
+    revalidate: 60
   };
 };

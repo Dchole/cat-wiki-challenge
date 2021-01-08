@@ -23,11 +23,17 @@ export type Query = {
 export type QueryBreedsArgs = {
   limit?: Maybe<Scalars['Int']>;
   page?: Maybe<Scalars['Int']>;
+  sortBy?: Maybe<Sort>;
 };
 
 
 export type QueryBreedArgs = {
   name: Scalars['String'];
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  insertBreeds?: Maybe<Array<Maybe<StoredBreeds>>>;
 };
 
 export type Breed = {
@@ -58,6 +64,21 @@ export type Image = {
   url: Scalars['String'];
 };
 
+export type StoredBreeds = {
+  __typename?: 'StoredBreeds';
+  _id: Scalars['ID'];
+};
+
+export enum Sort {
+  Recent = 'RECENT',
+  Popular = 'POPULAR'
+}
+
+export enum Order {
+  Desc = 'DESC',
+  Acs = 'ACS'
+}
+
 export type GetBreedQueryVariables = Exact<{
   name: Scalars['String'];
 }>;
@@ -78,6 +99,7 @@ export type GetBreedQuery = (
 export type GetBreedsQueryVariables = Exact<{
   limit?: Maybe<Scalars['Int']>;
   page?: Maybe<Scalars['Int']>;
+  sortBy?: Maybe<Sort>;
 }>;
 
 
@@ -132,8 +154,8 @@ export type GetBreedQueryHookResult = ReturnType<typeof useGetBreedQuery>;
 export type GetBreedLazyQueryHookResult = ReturnType<typeof useGetBreedLazyQuery>;
 export type GetBreedQueryResult = Apollo.QueryResult<GetBreedQuery, GetBreedQueryVariables>;
 export const GetBreedsDocument = gql`
-    query GetBreeds($limit: Int, $page: Int) {
-  breeds(limit: $limit, page: $page) {
+    query GetBreeds($limit: Int, $page: Int, $sortBy: Sort) {
+  breeds(limit: $limit, page: $page, sortBy: $sortBy) {
     id
     name
     image
@@ -155,6 +177,7 @@ export const GetBreedsDocument = gql`
  *   variables: {
  *      limit: // value for 'limit'
  *      page: // value for 'page'
+ *      sortBy: // value for 'sortBy'
  *   },
  * });
  */

@@ -1,5 +1,5 @@
-query GetBreeds($limit: Int, $page: Int) {
-  breeds(limit: $limit, page: $page) {
+query GetBreeds($limit: Int, $page: Int, $sortBy: Sort) {
+  breeds(limit: $limit, page: $page, sortBy: $sortBy) {
     id
     name
     image
