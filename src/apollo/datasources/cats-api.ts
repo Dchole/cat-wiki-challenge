@@ -1,5 +1,5 @@
 import { RequestOptions, RESTDataSource } from "apollo-datasource-rest";
-import type { Breed, Image } from "./types/generated/server";
+import type { Breed, Image } from "../types/generated/server";
 
 class CatsAPI extends RESTDataSource {
   constructor() {
@@ -37,10 +37,14 @@ class CatsAPI extends RESTDataSource {
     return this.breedReducer(result[0]);
   }
 
-  async getAllBreeds(limit = 10, page = 0): Promise<Breed[]> {
-    const result: Record<string, any>[] = await this.get(
-      `breeds?limit=${limit}&page=${page}`
-    );
+  async getAllBreeds(
+    limit: number | null = 0,
+    page: number | null = 0
+  ): Promise<Breed[]> {
+    const result: Record<string, any>[] =
+      !limit && !page
+        ? await this.get("breeds")
+        : await this.get(`breeds?limit=${limit}&page=${page}`);
 
     return result.map(breed => this.breedReducer(breed));
   }

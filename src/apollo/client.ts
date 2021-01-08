@@ -6,7 +6,7 @@ import {
   NormalizedCacheObject
 } from "@apollo/client";
 import merge from "deep-merge";
-import CatsAPI from "./datasource";
+import CatsAPI from "./datasources/cats-api";
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 

@@ -3,6 +3,10 @@ type Query {
   breed(name: String!): Breed!
 }
 
+type Mutation {
+  insertBreeds: [StoredBreeds]
+}
+
 type Breed {
   id: ID!
   name: String!
@@ -27,6 +31,10 @@ type Image {
   height: Int!
   width: Int!
   url: String!
+}
+
+type StoredBreeds {
+  _id: ID!
 }
 
 enum Sort {

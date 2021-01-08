@@ -31,6 +31,11 @@ export type QueryBreedArgs = {
   name: Scalars['String'];
 };
 
+export type Mutation = {
+  __typename?: 'Mutation';
+  insertBreeds?: Maybe<Array<Maybe<StoredBreeds>>>;
+};
+
 export type Breed = {
   __typename?: 'Breed';
   id: Scalars['ID'];
@@ -57,6 +62,11 @@ export type Image = {
   height: Scalars['Int'];
   width: Scalars['Int'];
   url: Scalars['String'];
+};
+
+export type StoredBreeds = {
+  __typename?: 'StoredBreeds';
+  _id: Scalars['ID'];
 };
 
 export enum Sort {
@@ -150,9 +160,11 @@ export type ResolversTypes = {
   Query: ResolverTypeWrapper<{}>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
   String: ResolverTypeWrapper<Scalars['String']>;
+  Mutation: ResolverTypeWrapper<{}>;
   Breed: ResolverTypeWrapper<Breed>;
   ID: ResolverTypeWrapper<Scalars['ID']>;
   Image: ResolverTypeWrapper<Image>;
+  StoredBreeds: ResolverTypeWrapper<StoredBreeds>;
   Sort: Sort;
   Order: Order;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
@@ -163,15 +175,21 @@ export type ResolversParentTypes = {
   Query: {};
   Int: Scalars['Int'];
   String: Scalars['String'];
+  Mutation: {};
   Breed: Breed;
   ID: Scalars['ID'];
   Image: Image;
+  StoredBreeds: StoredBreeds;
   Boolean: Scalars['Boolean'];
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   breeds?: Resolver<Array<ResolversTypes['Breed']>, ParentType, ContextType, RequireFields<QueryBreedsArgs, never>>;
   breed?: Resolver<ResolversTypes['Breed'], ParentType, ContextType, RequireFields<QueryBreedArgs, 'name'>>;
+};
+
+export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
+  insertBreeds?: Resolver<Maybe<Array<Maybe<ResolversTypes['StoredBreeds']>>>, ParentType, ContextType>;
 };
 
 export type BreedResolvers<ContextType = any, ParentType extends ResolversParentTypes['Breed'] = ResolversParentTypes['Breed']> = {
@@ -202,10 +220,17 @@ export type ImageResolvers<ContextType = any, ParentType extends ResolversParent
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type StoredBreedsResolvers<ContextType = any, ParentType extends ResolversParentTypes['StoredBreeds'] = ResolversParentTypes['StoredBreeds']> = {
+  _id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type Resolvers<ContextType = any> = {
   Query?: QueryResolvers<ContextType>;
+  Mutation?: MutationResolvers<ContextType>;
   Breed?: BreedResolvers<ContextType>;
   Image?: ImageResolvers<ContextType>;
+  StoredBreeds?: StoredBreedsResolvers<ContextType>;
 };
 
 
