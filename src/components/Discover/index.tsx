@@ -5,9 +5,11 @@ import Grid from "@material-ui/core/Grid";
 import ArrowRightIcon from "@material-ui/icons/ArrowRightAlt";
 import Link from "@/components/Link";
 import useDiscoverStyles from "./useDiscoverStyles";
+import { useGetBreedsQuery } from "@/apollo/types/generated/client";
 
 const Discover = () => {
   const classes = useDiscoverStyles();
+  const { data } = useGetBreedsQuery({ variables: { limit: 4 } });
 
   return (
     <Box
@@ -34,16 +36,17 @@ const Discover = () => {
         </Link>
       </Grid>
       <section className={classes.cats}>
-        {[1, 2, 3, 4].map(cat => (
-          <div key={cat}>
+        {data?.breeds?.map(breed => (
+          <Link href="/breed" key={breed.id} naked>
             <Image
-              src="/image 1.png"
-              alt="breed name"
+              src={breed.image}
+              alt={breed.name}
               width="220"
               height="220"
+              objectFit="cover"
             />
-            <span>breed name</span>
-          </div>
+            <span>{breed.name}</span>
+          </Link>
         ))}
       </section>
     </Box>

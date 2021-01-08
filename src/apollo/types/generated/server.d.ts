@@ -23,6 +23,7 @@ export type Query = {
 export type QueryBreedsArgs = {
   limit?: Maybe<Scalars['Int']>;
   page?: Maybe<Scalars['Int']>;
+  sortBy?: Maybe<Sort>;
 };
 
 
@@ -57,6 +58,16 @@ export type Image = {
   width: Scalars['Int'];
   url: Scalars['String'];
 };
+
+export enum Sort {
+  Recent = 'RECENT',
+  Popular = 'POPULAR'
+}
+
+export enum Order {
+  Desc = 'DESC',
+  Acs = 'ACS'
+}
 
 
 
@@ -142,6 +153,8 @@ export type ResolversTypes = {
   Breed: ResolverTypeWrapper<Breed>;
   ID: ResolverTypeWrapper<Scalars['ID']>;
   Image: ResolverTypeWrapper<Image>;
+  Sort: Sort;
+  Order: Order;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
 };
 

@@ -34,19 +34,25 @@ const useDiscoverStyles = makeStyles(theme =>
       alignItems: "center",
       marginTop: 45,
 
-      "& > div:first-child": {
-        position: "relative",
+      "& a": {
+        width: "100%",
+        color: theme.palette.text.primary,
+        textDecoration: "none",
 
-        "& > div::before": {
-          content: "''",
-          position: "absolute",
-          top: "50%",
-          left: 0,
-          width: "24%",
-          height: "80%",
-          transform: "translate(-25%, -50%)",
-          borderRadius: 14,
-          backgroundColor: "#DEC68B"
+        "&:first-child": {
+          position: "relative",
+
+          "& > div::before": {
+            content: "''",
+            position: "absolute",
+            top: "50%",
+            left: 0,
+            width: "24%",
+            height: "80%",
+            transform: "translate(-25%, -50%)",
+            borderRadius: 14,
+            backgroundColor: "#DEC68B"
+          }
         }
       },
 

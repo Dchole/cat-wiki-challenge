@@ -2,7 +2,7 @@ import { ApolloServer } from "apollo-server-micro";
 import CatsAPI from "apollo/datasource";
 import schemaWithResolvers from "apollo/schema";
 
-const apolloServer = new ApolloServer({
+export const apolloServer = new ApolloServer({
   schema: schemaWithResolvers,
   dataSources: () => ({ catsAPI: new CatsAPI() })
 });

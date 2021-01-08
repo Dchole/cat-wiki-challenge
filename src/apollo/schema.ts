@@ -1,4 +1,4 @@
-import resolvers from "apollo/resolvers";
+import resolvers from "./resolvers";
 import {
   addResolversToSchema,
   GraphQLFileLoader,

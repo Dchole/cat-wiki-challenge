@@ -1,5 +1,5 @@
 type Query {
-  breeds(limit: Int, page: Int): [Breed!]!
+  breeds(limit: Int, page: Int, sortBy: Sort): [Breed!]!
   breed(name: String!): Breed!
 }
 
@@ -27,4 +27,14 @@ type Image {
   height: Int!
   width: Int!
   url: String!
+}
+
+enum Sort {
+  RECENT
+  POPULAR
+}
+
+enum Order {
+  DESC
+  ACS
 }
