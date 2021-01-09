@@ -41,7 +41,7 @@ export type Breed = {
   id: Scalars['ID'];
   name: Scalars['String'];
   description: Scalars['String'];
-  temperature: Scalars['String'];
+  temperament: Scalars['String'];
   origin: Scalars['String'];
   lifeSpan: Scalars['String'];
   adaptability: Scalars['Int'];
@@ -79,6 +79,11 @@ export enum Order {
   Acs = 'ACS'
 }
 
+export type BreedQueryPartFragment = (
+  { __typename?: 'Breed' }
+  & Pick<Breed, 'id' | 'name' | 'description' | 'image'>
+);
+
 export type GetBreedQueryVariables = Exact<{
   name: Scalars['String'];
 }>;
@@ -88,11 +93,12 @@ export type GetBreedQuery = (
   { __typename?: 'Query' }
   & { breed: (
     { __typename?: 'Breed' }
-    & Pick<Breed, 'id' | 'name' | 'image' | 'description' | 'temperature' | 'origin'>
+    & Pick<Breed, 'temperament' | 'origin' | 'lifeSpan' | 'adaptability' | 'affectionLevel' | 'childFriendly' | 'grooming' | 'intelligence' | 'healthIssues' | 'socialNeeds' | 'strangerFriendly'>
     & { photos: Array<(
       { __typename?: 'Image' }
       & Pick<Image, 'url'>
     )> }
+    & BreedQueryPartFragment
   ) }
 );
 
@@ -111,22 +117,50 @@ export type GetBreedsQuery = (
   )> }
 );
 
+export type GetPopularBreedsQueryVariables = Exact<{
+  limit?: Maybe<Scalars['Int']>;
+  page?: Maybe<Scalars['Int']>;
+  sortBy?: Maybe<Sort>;
+}>;
 
+
+export type GetPopularBreedsQuery = (
+  { __typename?: 'Query' }
+  & { breeds: Array<(
+    { __typename?: 'Breed' }
+    & BreedQueryPartFragment
+  )> }
+);
+
+export const BreedQueryPartFragmentDoc = gql`
+    fragment BreedQueryPart on Breed {
+  id
+  name
+  description
+  image
+}
+    `;
 export const GetBreedDocument = gql`
     query GetBreed($name: String!) {
   breed(name: $name) {
-    id
-    name
-    image
-    description
-    temperature
+    ...BreedQueryPart
+    temperament
     origin
+    lifeSpan
+    adaptability
+    affectionLevel
+    childFriendly
+    grooming
+    intelligence
+    healthIssues
+    socialNeeds
+    strangerFriendly
     photos {
       url
     }
   }
 }
-    `;
+    ${BreedQueryPartFragmentDoc}`;
 
 /**
  * __useGetBreedQuery__
@@ -190,6 +224,41 @@ export function useGetBreedsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<
 export type GetBreedsQueryHookResult = ReturnType<typeof useGetBreedsQuery>;
 export type GetBreedsLazyQueryHookResult = ReturnType<typeof useGetBreedsLazyQuery>;
 export type GetBreedsQueryResult = Apollo.QueryResult<GetBreedsQuery, GetBreedsQueryVariables>;
+export const GetPopularBreedsDocument = gql`
+    query GetPopularBreeds($limit: Int, $page: Int, $sortBy: Sort) {
+  breeds(limit: $limit, page: $page, sortBy: $sortBy) {
+    ...BreedQueryPart
+  }
+}
+    ${BreedQueryPartFragmentDoc}`;
+
+/**
+ * __useGetPopularBreedsQuery__
+ *
+ * To run a query within a React component, call `useGetPopularBreedsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPopularBreedsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPopularBreedsQuery({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *      page: // value for 'page'
+ *      sortBy: // value for 'sortBy'
+ *   },
+ * });
+ */
+export function useGetPopularBreedsQuery(baseOptions?: Apollo.QueryHookOptions<GetPopularBreedsQuery, GetPopularBreedsQueryVariables>) {
+        return Apollo.useQuery<GetPopularBreedsQuery, GetPopularBreedsQueryVariables>(GetPopularBreedsDocument, baseOptions);
+      }
+export function useGetPopularBreedsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPopularBreedsQuery, GetPopularBreedsQueryVariables>) {
+          return Apollo.useLazyQuery<GetPopularBreedsQuery, GetPopularBreedsQueryVariables>(GetPopularBreedsDocument, baseOptions);
+        }
+export type GetPopularBreedsQueryHookResult = ReturnType<typeof useGetPopularBreedsQuery>;
+export type GetPopularBreedsLazyQueryHookResult = ReturnType<typeof useGetPopularBreedsLazyQuery>;
+export type GetPopularBreedsQueryResult = Apollo.QueryResult<GetPopularBreedsQuery, GetPopularBreedsQueryVariables>;
 
       export interface PossibleTypesResultData {
         possibleTypes: {

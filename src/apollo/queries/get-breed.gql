@@ -2,10 +2,19 @@ query GetBreed($name: String!) {
   breed(name: $name) {
     id
     name
-    image
     description
-    temperature
+    image
+    temperament
     origin
+    lifeSpan
+    adaptability
+    affectionLevel
+    childFriendly
+    grooming
+    intelligence
+    healthIssues
+    socialNeeds
+    strangerFriendly
     photos {
       url
     }

@@ -41,7 +41,7 @@ export type Breed = {
   id: Scalars['ID'];
   name: Scalars['String'];
   description: Scalars['String'];
-  temperature: Scalars['String'];
+  temperament: Scalars['String'];
   origin: Scalars['String'];
   lifeSpan: Scalars['String'];
   adaptability: Scalars['Int'];
@@ -196,7 +196,7 @@ export type BreedResolvers<ContextType = any, ParentType extends ResolversParent
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   description?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  temperature?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  temperament?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   origin?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   lifeSpan?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   adaptability?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;

@@ -32,7 +32,7 @@ const Brief = () => {
           Having a cat around you can actually trigger the release of calming
           chemicals in your body which lower your stress and anxiety leves
         </Typography>
-        <Link href="/more">
+        <Link href="#">
           <span>Read more</span> <ArrowRightAltIcon />
         </Link>
       </section>

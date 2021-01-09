@@ -11,7 +11,7 @@ type Breed {
   id: ID!
   name: String!
   description: String!
-  temperature: String!
+  temperament: String!
   origin: String!
   lifeSpan: String!
   adaptability: Int!

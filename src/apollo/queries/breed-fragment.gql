@@ -1,0 +1,6 @@
+fragment BreedQueryPart on Breed {
+  id
+  name
+  description
+  image
+}

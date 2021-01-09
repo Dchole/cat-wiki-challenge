@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import ArrowRightIcon from "@material-ui/icons/ArrowRightAlt";
 import Link from "@/components/Link";
 import useDiscoverStyles from "./useDiscoverStyles";
+import slugify from "@/utils/slugify";
 import { Sort, useGetBreedsQuery } from "@/apollo/types/generated/client";
 
 const Discover = () => {
@@ -33,13 +34,13 @@ const Discover = () => {
         <Typography component="h2" variant="h3">
           66+ Breeds For you to discover
         </Typography>
-        <Link href="/more">
+        <Link href="/popular">
           <span>See more</span> <ArrowRightIcon />
         </Link>
       </Grid>
       <section className={classes.cats}>
-        {data?.breeds?.map(breed => (
-          <Link href="/breed" key={breed.id} naked>
+        {data?.breeds.map(breed => (
+          <Link href={`/breeds/${slugify(breed.name)}`} key={breed.id} naked>
             <Image
               src={breed.image}
               alt={breed.name}

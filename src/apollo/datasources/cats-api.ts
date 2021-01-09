@@ -17,7 +17,7 @@ class CatsAPI extends RESTDataSource {
       name: breed.name,
       description: breed.description,
       image: breed.image?.url,
-      temperature: breed.temperature,
+      temperament: breed.temperament,
       origin: breed.origin,
       lifeSpan: breed.life_span,
       adaptability: breed.adaptability,

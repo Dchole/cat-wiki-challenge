@@ -1,2 +1,3 @@
-const slugify = (name: string) => name.toLowerCase().split(" ").join("-");
+const slugify = (name: string) =>
+  encodeURIComponent(name.toLowerCase().split(" ").join("-"));
 export default slugify;
