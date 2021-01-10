@@ -38,8 +38,8 @@ class CatsAPI extends RESTDataSource {
   }
 
   async getAllBreeds(
-    limit: number | null = 0,
-    page: number | null = 0
+    limit: number | null = null,
+    page: number | null = null
   ): Promise<Breed[]> {
     const result: Record<string, any>[] =
       !limit && !page

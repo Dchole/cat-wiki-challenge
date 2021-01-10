@@ -17,7 +17,7 @@ const theme = createMuiTheme({
     }
   },
   typography: {
-    fontFamily: "'Montserrat', sans-serif",
+    fontFamily: "'Montserrat', monospace",
     h3: {
       fontWeight: "bold"
     },

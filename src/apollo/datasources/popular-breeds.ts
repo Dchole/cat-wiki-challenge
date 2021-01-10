@@ -1,4 +1,5 @@
 import { MongoDataSource } from "apollo-datasource-mongodb";
+import { ApolloError } from "apollo-server-micro";
 import type { Breed } from "../types/generated/server";
 
 type TData = Pick<Breed, "name"> & { searchCount: number };
@@ -22,12 +23,18 @@ class PopularBreeds extends MongoDataSource<TData> {
   }
 
   async updateSearchCount(name: string) {
-    const breed = await this.collection.findOne({ name });
+    const breed = await this.collection.findOne({ name }).catch(err => {
+      throw new ApolloError("DB Query failed");
+    });
 
-    this.collection.findOneAndUpdate(
-      { name },
-      { $set: { searchCount: breed.searchCount + 1 } }
-    );
+    this.collection
+      .findOneAndUpdate(
+        { name },
+        { $set: { searchCount: breed.searchCount + 1 } }
+      )
+      .catch(err => {
+        throw new ApolloError("Update Failed");
+      });
   }
 }
 

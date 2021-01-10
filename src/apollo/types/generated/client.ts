@@ -84,6 +84,17 @@ export type BreedQueryPartFragment = (
   & Pick<Breed, 'id' | 'name' | 'description' | 'image'>
 );
 
+export type GetBreedNamesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetBreedNamesQuery = (
+  { __typename?: 'Query' }
+  & { breeds: Array<(
+    { __typename?: 'Breed' }
+    & Pick<Breed, 'id' | 'name'>
+  )> }
+);
+
 export type GetBreedQueryVariables = Exact<{
   name: Scalars['String'];
 }>;
@@ -93,12 +104,11 @@ export type GetBreedQuery = (
   { __typename?: 'Query' }
   & { breed: (
     { __typename?: 'Breed' }
-    & Pick<Breed, 'temperament' | 'origin' | 'lifeSpan' | 'adaptability' | 'affectionLevel' | 'childFriendly' | 'grooming' | 'intelligence' | 'healthIssues' | 'socialNeeds' | 'strangerFriendly'>
+    & Pick<Breed, 'id' | 'name' | 'description' | 'image' | 'temperament' | 'origin' | 'lifeSpan' | 'adaptability' | 'affectionLevel' | 'childFriendly' | 'grooming' | 'intelligence' | 'healthIssues' | 'socialNeeds' | 'strangerFriendly'>
     & { photos: Array<(
       { __typename?: 'Image' }
       & Pick<Image, 'url'>
     )> }
-    & BreedQueryPartFragment
   ) }
 );
 
@@ -128,7 +138,7 @@ export type GetPopularBreedsQuery = (
   { __typename?: 'Query' }
   & { breeds: Array<(
     { __typename?: 'Breed' }
-    & BreedQueryPartFragment
+    & Pick<Breed, 'id' | 'name' | 'description' | 'image'>
   )> }
 );
 
@@ -140,10 +150,46 @@ export const BreedQueryPartFragmentDoc = gql`
   image
 }
     `;
+export const GetBreedNamesDocument = gql`
+    query GetBreedNames {
+  breeds {
+    id
+    name
+  }
+}
+    `;
+
+/**
+ * __useGetBreedNamesQuery__
+ *
+ * To run a query within a React component, call `useGetBreedNamesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBreedNamesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBreedNamesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetBreedNamesQuery(baseOptions?: Apollo.QueryHookOptions<GetBreedNamesQuery, GetBreedNamesQueryVariables>) {
+        return Apollo.useQuery<GetBreedNamesQuery, GetBreedNamesQueryVariables>(GetBreedNamesDocument, baseOptions);
+      }
+export function useGetBreedNamesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBreedNamesQuery, GetBreedNamesQueryVariables>) {
+          return Apollo.useLazyQuery<GetBreedNamesQuery, GetBreedNamesQueryVariables>(GetBreedNamesDocument, baseOptions);
+        }
+export type GetBreedNamesQueryHookResult = ReturnType<typeof useGetBreedNamesQuery>;
+export type GetBreedNamesLazyQueryHookResult = ReturnType<typeof useGetBreedNamesLazyQuery>;
+export type GetBreedNamesQueryResult = Apollo.QueryResult<GetBreedNamesQuery, GetBreedNamesQueryVariables>;
 export const GetBreedDocument = gql`
     query GetBreed($name: String!) {
   breed(name: $name) {
-    ...BreedQueryPart
+    id
+    name
+    description
+    image
     temperament
     origin
     lifeSpan
@@ -160,7 +206,7 @@ export const GetBreedDocument = gql`
     }
   }
 }
-    ${BreedQueryPartFragmentDoc}`;
+    `;
 
 /**
  * __useGetBreedQuery__
@@ -227,10 +273,13 @@ export type GetBreedsQueryResult = Apollo.QueryResult<GetBreedsQuery, GetBreedsQ
 export const GetPopularBreedsDocument = gql`
     query GetPopularBreeds($limit: Int, $page: Int, $sortBy: Sort) {
   breeds(limit: $limit, page: $page, sortBy: $sortBy) {
-    ...BreedQueryPart
+    id
+    name
+    description
+    image
   }
 }
-    ${BreedQueryPartFragmentDoc}`;
+    `;
 
 /**
  * __useGetPopularBreedsQuery__

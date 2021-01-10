@@ -22,32 +22,34 @@ const PopularBreeds = () => {
     <section id="most-searched-breeds" className={classes.root}>
       <List>
         {data?.breeds.map((breed, i) => (
-          <ListItem
-            key={breed.id}
-            component={Link}
-            href={`/breeds/${slugify(breed.name)}`}
-            className={classes.item}
-          >
-            <ListItemAvatar>
-              <Image
-                src={breed.image}
-                alt={breed.name}
-                width="170"
-                height="170"
-                objectFit="cover"
+          <li key={breed.id}>
+            <ListItem
+              component={Link}
+              aria-label={breed.name}
+              href={`/breeds/${slugify(breed.name)}`}
+              className={classes.item}
+            >
+              <ListItemAvatar>
+                <Image
+                  src={breed.image}
+                  alt={breed.name}
+                  width="170"
+                  height="170"
+                  objectFit="cover"
+                />
+              </ListItemAvatar>
+              <ListItemText
+                primary={
+                  <Typography component="h2" variant="h5">
+                    {i + 1}. {breed.name}
+                  </Typography>
+                }
+                secondary={
+                  <Typography variant="body2">{breed.description}</Typography>
+                }
               />
-            </ListItemAvatar>
-            <ListItemText
-              primary={
-                <Typography component="h2" variant="h5">
-                  {i + 1}. {breed.name}
-                </Typography>
-              }
-              secondary={
-                <Typography variant="body2">{breed.description}</Typography>
-              }
-            />
-          </ListItem>
+            </ListItem>
+          </li>
         ))}
       </List>
     </section>

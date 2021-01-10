@@ -23,6 +23,9 @@ const useHeroStyles = makeStyles(theme =>
       padding: theme.spacing(1.5, 2.5),
       borderRadius: 60,
       backgroundColor: "white"
+    },
+    searchIcon: {
+      marginLeft: theme.spacing(2)
     }
   })
 );

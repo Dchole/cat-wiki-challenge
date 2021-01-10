@@ -1,0 +1,6 @@
+query GetBreedNames {
+  breeds {
+    id
+    name
+  }
+}
