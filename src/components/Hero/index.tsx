@@ -7,8 +7,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import SearchIcon from "@material-ui/icons/Search";
 import useHeroStyles from "./useHeroStyles";
-import { useGetBreedNamesLazyQuery } from "@/apollo/types/generated/client";
 import slugify from "@/utils/slugify";
+import { useGetBreedNamesLazyQuery } from "@/apollo/types/generated/client";
 
 const Hero = () => {
   const classes = useHeroStyles();
