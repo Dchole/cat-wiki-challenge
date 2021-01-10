@@ -17,7 +17,7 @@ function createIsomorphLink() {
     const database = require("@/lib/database").default;
     const PopularBreeds = require("./datasources/popular-breeds").default;
     const schema = require("./schema").default;
-    const { apolloServer } = require("pages/api/graphql");
+    const { apolloServer } = require("../pages/api/graphql");
 
     return new SchemaLink({
       schema,

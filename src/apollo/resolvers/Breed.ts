@@ -1,5 +1,5 @@
-import { TContext } from "apollo/types/context";
-import { BreedResolvers } from "../types/generated/server";
+import type { TContext } from "../types/context";
+import type { BreedResolvers } from "../types/generated/server";
 
 const Breed: BreedResolvers<TContext> = {
   image: async (breed, __, { dataSources: { catsAPI } }) => {

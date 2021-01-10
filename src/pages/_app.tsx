@@ -6,7 +6,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "@/lib/theme";
 import Layout from "@/components/Layout";
 import { ApolloProvider } from "@apollo/client";
-import { useApollo } from "apollo/client";
+import { useApollo } from "@/apollo/client";
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   const apolloClient = useApollo(pageProps.initialApolloState);

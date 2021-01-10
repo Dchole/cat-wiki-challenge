@@ -6,7 +6,7 @@ import Discover from "@/components/Discover";
 import Brief from "@/components/Brief";
 import { initializeApollo } from "@/apollo/client";
 // @ts-ignore
-import GET_BREEDS from "../apollo/queries/get-breeds.gql";
+import GET_BREEDS from "@/apollo/queries/get-breeds.gql";
 
 const Index = () => {
   return (

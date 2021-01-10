@@ -1,7 +1,7 @@
 import { ApolloServer } from "apollo-server-micro";
 import { Db } from "mongodb";
 import CatsAPI from "@/apollo/datasources/cats-api";
-import schemaWithResolvers from "apollo/schema";
+import schemaWithResolvers from "@/apollo/schema";
 import PopularBreeds from "@/apollo/datasources/popular-breeds";
 import database from "@/lib/database";
 

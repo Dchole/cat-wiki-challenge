@@ -1,4 +1,4 @@
-import type { Resolvers } from "apollo/types/generated/server";
+import type { Resolvers } from "../types/generated/server";
 import Breed from "./Breed";
 import Mutation from "./Mutation";
 import Query from "./Query";

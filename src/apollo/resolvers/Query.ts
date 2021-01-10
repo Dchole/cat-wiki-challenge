@@ -1,4 +1,4 @@
-import { TContext } from "apollo/types/context";
+import type { TContext } from "../types/context";
 import type { Breed, QueryResolvers } from "../types/generated/server";
 
 const Query: QueryResolvers<TContext> = {
