@@ -2,15 +2,17 @@ import resolvers from "./resolvers";
 import {
   addResolversToSchema,
   GraphQLFileLoader,
-  loadSchemaSync
+  loadSchemaSync,
+  makeExecutableSchema
 } from "graphql-tools";
+import typeDefs from "./type-defs";
 
-const schema = loadSchemaSync("./src/apollo/schema.gql", {
-  loaders: [new GraphQLFileLoader()]
-});
+// const schema = loadSchemaSync("./src/apollo/schema.gql", {
+//   loaders: [new GraphQLFileLoader()]
+// });
 
-const schemaWithResolvers = addResolversToSchema({
-  schema,
+const schemaWithResolvers = makeExecutableSchema({
+  typeDefs,
   resolvers
 });
 
