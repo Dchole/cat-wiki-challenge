@@ -13,12 +13,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "@/lib/*": ["src/lib/*"],
-      "@/utils/*": ["src/utils/*"],
-      "@/apollo/*": ["src/apollo/*"],
-      "@/components/*": ["src/components/*"]
+      "@/lib/*": ["/lib/*"],
+      "@/utils/*": ["/utils/*"],
+      "@/apollo/*": ["/apollo/*"],
+      "@/components/*": ["/components/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
