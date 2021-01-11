@@ -15,10 +15,10 @@
     "jsx": "preserve",
     "baseUrl": "./src",
     "paths": {
-      "@/lib/*": ["/lib/*"],
-      "@/utils/*": ["/utils/*"],
-      "@/apollo/*": ["/apollo/*"],
-      "@/components/*": ["/components/*"]
+      "@/lib/*": ["lib/*"],
+      "@/utils/*": ["utils/*"],
+      "@/apollo/*": ["apollo/*"],
+      "@/components/*": ["components/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
