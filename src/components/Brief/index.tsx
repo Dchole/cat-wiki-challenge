@@ -15,24 +15,16 @@ const Brief = () => {
   const classes = useBriefStyles();
 
   return (
-    <Box
-      component="section"
-      display="flex"
-      gridGap={45}
-      justifyContent="space-between"
-      alignItems="center"
-      p={[2, 5, 10]}
-      className={classes.root}
-    >
+    <Box component="section" mt={4} p={[2, 5, 10]} className={classes.root}>
       <section className={classes.brief}>
-        <Typography component="h2" variant="h3">
+        <Typography component="h2" variant="h4">
           Why should you have a cat?
         </Typography>
-        <Typography>
+        <Typography variant="body2">
           Having a cat around you can actually trigger the release of calming
           chemicals in your body which lower your stress and anxiety leves
         </Typography>
-        <Link href="#">
+        <Link href="/">
           <span>Read more</span> <ArrowRightAltIcon />
         </Link>
       </section>

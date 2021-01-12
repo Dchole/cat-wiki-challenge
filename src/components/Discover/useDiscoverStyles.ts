@@ -4,11 +4,22 @@ const useDiscoverStyles = makeStyles(theme =>
   createStyles({
     root: {
       backgroundColor: theme.palette.primary.main,
-      borderBottomLeftRadius: 60,
-      borderBottomRightRadius: 60,
+      borderBottomLeftRadius: 42,
+      borderBottomRightRadius: 42,
 
       "& h2": {
-        width: "50%"
+        width: "100%",
+        fontWeight: "bold"
+      },
+
+      [theme.breakpoints.up("sm")]: {
+        borderBottomLeftRadius: 60,
+        borderBottomRightRadius: 60,
+
+        "& h2": {
+          width: "50%",
+          fontSize: theme.typography.h3.fontSize
+        }
       },
 
       "& .MuiTypography-subtitle1": {
@@ -26,13 +37,29 @@ const useDiscoverStyles = makeStyles(theme =>
       }
     },
     header: {
-      marginTop: 36
+      marginTop: 36,
+
+      "& a span": {
+        justifyContent: "flex-end",
+        marginTop: 24,
+
+        [theme.breakpoints.up("sm")]: {
+          fontSize: theme.typography.body1.fontSize
+        }
+      }
     },
     cats: {
-      display: "flex",
-      gap: 50,
-      alignItems: "center",
-      marginTop: 45,
+      marginTop: 30,
+      display: "grid",
+      gap: 14,
+      gridTemplateColumns: "1fr 1fr",
+
+      [theme.breakpoints.up("sm")]: {
+        display: "flex",
+        alignItems: "center",
+        marginTop: 45,
+        gap: 50
+      },
 
       "& a": {
         width: "100%",
@@ -56,14 +83,14 @@ const useDiscoverStyles = makeStyles(theme =>
         }
       },
 
-      "& img": {
-        borderRadius: 24
-      },
-
       "& span": {
         fontWeight: 600,
-        fontSize: "1.125rem",
-        fontFamily: theme.typography.fontFamily
+        fontSize: "0.875rem",
+        fontFamily: theme.typography.fontFamily,
+
+        [theme.breakpoints.up("sm")]: {
+          fontSize: "1.125rem"
+        }
       }
     }
   })

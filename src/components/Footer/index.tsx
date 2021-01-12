@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <Container component="footer" className={classes.footer}>
       <img src="/logo-white.svg" alt="logo" />
-      <Typography component="span">
+      <Typography component="span" variant="body2" align="center">
         &copy; Derek Oware - devchallenge.io
       </Typography>
     </Container>

@@ -2,16 +2,19 @@ import { createStyles, makeStyles } from "@material-ui/core";
 
 const useBriefStyles = makeStyles(theme =>
   createStyles({
-    root: {},
+    root: {
+      [theme.breakpoints.up("sm")]: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        gap: 50
+      }
+    },
     brief: {
-      display: "flex",
-      flexDirection: "column",
-      maxWidth: "50%",
-      alignItems: "flex-start",
-      gap: 45,
-
       "& h2": {
         position: "relative",
+        fontWeight: "bold",
+        marginBottom: theme.spacing(2),
 
         "&::before": {
           content: "''",
@@ -22,14 +25,38 @@ const useBriefStyles = makeStyles(theme =>
           width: 60,
           borderTop: `3px solid ${theme.palette.text.primary}`
         }
+      },
+
+      "& p": {
+        marginBottom: theme.spacing(2)
+      },
+
+      [theme.breakpoints.up("sm")]: {
+        width: "50%",
+
+        "& p": {
+          fontSize: theme.typography.body1.fontSize
+        },
+
+        "& a span": {
+          fontSize: "1rem"
+        }
       }
     },
     images: {
       display: "grid",
-      gap: 25,
-      gridTemplateAreas: `". a a c"
-                          ". . b c"
-                          ". . b ."`,
+      gap: 12,
+      margin: theme.spacing(3, "auto", 2),
+      gridTemplateAreas: `". a a a c c"
+                          ". . b b c c"
+                          ". . b b . ."`,
+
+      [theme.breakpoints.up("sm")]: {
+        gap: 25,
+        gridTemplateAreas: `". a a c"
+                            ". . b c"
+                            ". . b ."`
+      },
 
       "& > div:first-child": {
         gridArea: "a"

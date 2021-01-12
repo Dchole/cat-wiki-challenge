@@ -2,6 +2,7 @@ import Image from "next/image";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import Hidden from "@material-ui/core/Hidden";
 import ArrowRightIcon from "@material-ui/icons/ArrowRightAlt";
 import Link from "@/components/Link";
 import useDiscoverStyles from "./useDiscoverStyles";
@@ -31,12 +32,14 @@ const Discover = () => {
         className={classes.header}
         container
       >
-        <Typography component="h2" variant="h3">
+        <Typography component="h2" variant="h5">
           66+ Breeds For you to discover
         </Typography>
-        <Link href="/popular">
-          <span>See more</span> <ArrowRightIcon />
-        </Link>
+        <Hidden xsDown>
+          <Link href="/popular">
+            <span>See more</span> <ArrowRightIcon />
+          </Link>
+        </Hidden>
       </Grid>
       <section className={classes.cats}>
         {data?.breeds.map(breed => (
@@ -52,6 +55,11 @@ const Discover = () => {
           </Link>
         ))}
       </section>
+      <Hidden smUp>
+        <Link href="/popular">
+          <span>See more</span> <ArrowRightIcon />
+        </Link>
+      </Hidden>
     </Box>
   );
 };

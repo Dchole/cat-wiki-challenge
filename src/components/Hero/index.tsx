@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
@@ -17,6 +19,8 @@ const Hero = () => {
   const [names, setNames] = useState<string[]>([]);
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
+  const theme = useTheme();
+  const mobile = useMediaQuery(theme.breakpoints.down("xs"));
 
   const handleOpen = () => {
     setOpen(true);
@@ -58,7 +62,12 @@ const Hero = () => {
         <Typography id="heading" variant="h1" className={classes.heading}>
           CatWiki
         </Typography>
-        <img src="/cat.svg" alt="cat" height="64" width="64" />
+        <img
+          src="/cat.svg"
+          alt="cat"
+          height={mobile ? "32" : "64"}
+          width={mobile ? "32" : "64"}
+        />
       </div>
       <Typography className={classes.subheading}>
         Get to know more about your cat breed

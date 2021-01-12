@@ -36,6 +36,17 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
           </ApolloProvider>
         </Layout>
       </ThemeProvider>
+      <style jsx global>{`
+        img {
+          border-radius: 12px;
+        }
+
+        @media (min-width: 599px) {
+          img {
+            border-radius: 24px;
+          }
+        }
+      `}</style>
     </>
   );
 };

@@ -4,16 +4,30 @@ const useHeroStyles = makeStyles(theme =>
   createStyles({
     hero: {
       background: "url(/HeroImagemd.png) center center/cover",
-      borderTopRightRadius: 60,
-      borderTopLeftRadius: 60
+      borderTopRightRadius: 42,
+      borderTopLeftRadius: 42,
+
+      [theme.breakpoints.up("sm")]: {
+        borderTopRightRadius: 60,
+        borderTopLeftRadius: 60
+      }
     },
     flexbox: {
       display: "flex",
-      gap: 24
+      alignItems: "center",
+      gap: 12,
+
+      [theme.breakpoints.up("sm")]: {
+        gap: 24
+      }
     },
     heading: {
       fontFamily: "'Mystery Quest', cursive",
-      fontSize: "4rem"
+      fontSize: "1.125rem",
+
+      [theme.breakpoints.up("sm")]: {
+        fontSize: "4rem"
+      }
     },
     subheading: {
       fontSize: "1.5rem",
