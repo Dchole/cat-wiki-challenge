@@ -56,7 +56,7 @@ const Discover = () => {
         ))}
       </section>
       <Hidden smUp>
-        <Link href="/popular">
+        <Link className={classes.more} href="/popular">
           <span>See more</span> <ArrowRightIcon />
         </Link>
       </Hidden>

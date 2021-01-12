@@ -39,17 +39,16 @@ const useDiscoverStyles = makeStyles(theme =>
     header: {
       marginTop: 36,
 
-      "& a span": {
-        justifyContent: "flex-end",
-        marginTop: 24,
-
-        [theme.breakpoints.up("sm")]: {
-          fontSize: theme.typography.body1.fontSize
+      "& a": {
+        "& span": {
+          [theme.breakpoints.up("sm")]: {
+            fontSize: theme.typography.body1.fontSize
+          }
         }
       }
     },
     cats: {
-      marginTop: 30,
+      margin: theme.spacing(3.6, 0, 3),
       display: "grid",
       gap: 14,
       gridTemplateColumns: "1fr 1fr",
@@ -92,6 +91,9 @@ const useDiscoverStyles = makeStyles(theme =>
           fontSize: "1.125rem"
         }
       }
+    },
+    more: {
+      justifyContent: "flex-end"
     }
   })
 );
