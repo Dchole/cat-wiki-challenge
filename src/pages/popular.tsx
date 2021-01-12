@@ -6,15 +6,18 @@ import PopularBreeds from "@/components/PopularBreeds";
 import { initializeApollo } from "@/apollo/client";
 // @ts-ignore
 import GET_POPULAR_BREEDS from "../apollo/queries/get-popular-breeds.gql";
+import usePopularBreedsStyles from "@/components/PopularBreeds/usePopularBreedsStyles";
 
 const Popular = () => {
+  const classes = usePopularBreedsStyles();
+
   return (
     <>
       <Head>
         <title>Most Searched Breeds</title>
       </Head>
       <Container component="main" maxWidth="md">
-        <Typography component="h1" variant="h3">
+        <Typography component="h1" variant="h4" className={classes.heading}>
           Top 10 most searched breeds
         </Typography>
         <PopularBreeds />

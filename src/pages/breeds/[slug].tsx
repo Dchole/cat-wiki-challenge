@@ -26,7 +26,7 @@ const Breed = () => {
         <title>{breedName}</title>
       </Head>
       <Container component="main">
-        <Grid component="section" container>
+        <Grid component="section" spacing={3} container>
           <Grid xs={12} sm={6} item>
             <Image
               src={data?.breed.image}

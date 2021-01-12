@@ -18,11 +18,21 @@ const useCharacteristicsStyles = makeStyles(theme =>
           display: "flex",
 
           "& > .bar": {
-            width: 60,
-            height: 12,
+            width: 20,
+            height: 6,
             marginRight: 9,
             borderRadius: 8,
-            backgroundColor: theme.palette.primary.main
+            backgroundColor: theme.palette.primary.main,
+
+            [theme.breakpoints.between("sm", "md")]: {
+              width: 30,
+              height: 8
+            },
+
+            [theme.breakpoints.up("md")]: {
+              width: 60,
+              height: 12
+            }
           },
 
           "& > .fill": {

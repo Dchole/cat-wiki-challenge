@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
@@ -11,9 +13,13 @@ import {
   Sort,
   useGetPopularBreedsQuery
 } from "@/apollo/types/generated/client";
+import shorten from "@/utils/shorten";
 
 const PopularBreeds = () => {
   const classes = usePopularBreedsStyles();
+  const theme = useTheme();
+  const mobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   const { data } = useGetPopularBreedsQuery({
     variables: { limit: 10, sortBy: Sort["Popular"] }
   });
@@ -29,7 +35,7 @@ const PopularBreeds = () => {
               href={`/breeds/${slugify(breed.name)}`}
               className={classes.item}
             >
-              <ListItemAvatar>
+              <ListItemAvatar className={classes.avatar}>
                 <Image
                   src={breed.image}
                   alt={breed.name}
@@ -45,7 +51,9 @@ const PopularBreeds = () => {
                   </Typography>
                 }
                 secondary={
-                  <Typography variant="body2">{breed.description}</Typography>
+                  <Typography variant="body2">
+                    {mobile ? shorten(breed.description) : breed.description}
+                  </Typography>
                 }
               />
             </ListItem>
