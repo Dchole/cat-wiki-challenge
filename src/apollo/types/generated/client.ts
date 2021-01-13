@@ -34,6 +34,12 @@ export type QueryBreedArgs = {
 export type Mutation = {
   __typename?: 'Mutation';
   insertBreeds?: Maybe<Array<Maybe<StoredBreeds>>>;
+  incrementSearchCount?: Maybe<Scalars['String']>;
+};
+
+
+export type MutationIncrementSearchCountArgs = {
+  name: Scalars['String'];
 };
 
 export type Breed = {
@@ -140,6 +146,16 @@ export type GetPopularBreedsQuery = (
     { __typename?: 'Breed' }
     & Pick<Breed, 'id' | 'name' | 'description' | 'image'>
   )> }
+);
+
+export type IncrementSearchCountMutationVariables = Exact<{
+  name: Scalars['String'];
+}>;
+
+
+export type IncrementSearchCountMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'incrementSearchCount'>
 );
 
 export const BreedQueryPartFragmentDoc = gql`
@@ -308,6 +324,36 @@ export function useGetPopularBreedsLazyQuery(baseOptions?: Apollo.LazyQueryHookO
 export type GetPopularBreedsQueryHookResult = ReturnType<typeof useGetPopularBreedsQuery>;
 export type GetPopularBreedsLazyQueryHookResult = ReturnType<typeof useGetPopularBreedsLazyQuery>;
 export type GetPopularBreedsQueryResult = Apollo.QueryResult<GetPopularBreedsQuery, GetPopularBreedsQueryVariables>;
+export const IncrementSearchCountDocument = gql`
+    mutation IncrementSearchCount($name: String!) {
+  incrementSearchCount(name: $name)
+}
+    `;
+export type IncrementSearchCountMutationFn = Apollo.MutationFunction<IncrementSearchCountMutation, IncrementSearchCountMutationVariables>;
+
+/**
+ * __useIncrementSearchCountMutation__
+ *
+ * To run a mutation, you first call `useIncrementSearchCountMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useIncrementSearchCountMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [incrementSearchCountMutation, { data, loading, error }] = useIncrementSearchCountMutation({
+ *   variables: {
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useIncrementSearchCountMutation(baseOptions?: Apollo.MutationHookOptions<IncrementSearchCountMutation, IncrementSearchCountMutationVariables>) {
+        return Apollo.useMutation<IncrementSearchCountMutation, IncrementSearchCountMutationVariables>(IncrementSearchCountDocument, baseOptions);
+      }
+export type IncrementSearchCountMutationHookResult = ReturnType<typeof useIncrementSearchCountMutation>;
+export type IncrementSearchCountMutationResult = Apollo.MutationResult<IncrementSearchCountMutation>;
+export type IncrementSearchCountMutationOptions = Apollo.BaseMutationOptions<IncrementSearchCountMutation, IncrementSearchCountMutationVariables>;
 
       export interface PossibleTypesResultData {
         possibleTypes: {

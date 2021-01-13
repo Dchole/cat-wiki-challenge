@@ -34,6 +34,12 @@ export type QueryBreedArgs = {
 export type Mutation = {
   __typename?: 'Mutation';
   insertBreeds?: Maybe<Array<Maybe<StoredBreeds>>>;
+  incrementSearchCount?: Maybe<Scalars['String']>;
+};
+
+
+export type MutationIncrementSearchCountArgs = {
+  name: Scalars['String'];
 };
 
 export type Breed = {
@@ -190,6 +196,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
   insertBreeds?: Resolver<Maybe<Array<Maybe<ResolversTypes['StoredBreeds']>>>, ParentType, ContextType>;
+  incrementSearchCount?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, RequireFields<MutationIncrementSearchCountArgs, 'name'>>;
 };
 
 export type BreedResolvers<ContextType = any, ParentType extends ResolversParentTypes['Breed'] = ResolversParentTypes['Breed']> = {

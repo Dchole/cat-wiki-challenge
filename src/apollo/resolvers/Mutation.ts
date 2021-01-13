@@ -5,6 +5,14 @@ const Mutation: MutationResolvers<TContext> = {
   insertBreeds: async (_, __, { dataSources: { catsAPI, popularBreeds } }) => {
     const breeds = await catsAPI.getAllBreeds();
     return popularBreeds.storeBreeds(breeds) as any;
+  },
+  incrementSearchCount: async (
+    _,
+    { name },
+    { dataSources: { popularBreeds } }
+  ) => {
+    await popularBreeds.updateSearchCount(name);
+    return "incremented";
   }
 };
 

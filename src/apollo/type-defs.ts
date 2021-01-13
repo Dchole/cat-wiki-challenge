@@ -8,6 +8,7 @@ const typeDefs = gql`
 
   type Mutation {
     insertBreeds: [StoredBreeds]
+    incrementSearchCount(name: String!): String
   }
 
   type Breed {

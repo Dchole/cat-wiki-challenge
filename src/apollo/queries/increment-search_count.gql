@@ -1,0 +1,3 @@
+mutation IncrementSearchCount($name: String!) {
+  incrementSearchCount(name: $name)
+}

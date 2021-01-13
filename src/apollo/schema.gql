@@ -5,6 +5,7 @@ type Query {
 
 type Mutation {
   insertBreeds: [StoredBreeds]
+  incrementSearchCount(name: String!): String
 }
 
 type Breed {

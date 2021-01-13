@@ -12,13 +12,25 @@ import OtherPhotos from "@/components/OtherPhotos";
 import { initializeApollo } from "@/apollo/client";
 // @ts-ignore
 import GET_BREED from "@/apollo/queries/get-breed.gql";
-import { useGetBreedQuery } from "@/apollo/types/generated/client";
+import {
+  useGetBreedQuery,
+  useIncrementSearchCountMutation
+} from "@/apollo/types/generated/client";
 import type { Breed as TBreed } from "@/apollo/types/generated/server";
+import { useEffect } from "react";
 
 const Breed = () => {
   const { query } = useRouter();
   const breedName = deslugify(query.slug as string);
   const { data } = useGetBreedQuery({ variables: { name: breedName } });
+  const [incrementSearchCount] = useIncrementSearchCountMutation();
+
+  useEffect(() => {
+    (async () =>
+      await incrementSearchCount({
+        variables: { name: breedName }
+      }))();
+  }, []);
 
   return (
     <>
