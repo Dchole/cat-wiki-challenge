@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import PopularBreeds from "@/components/PopularBreeds";
 import { initializeApollo } from "@/apollo/client";
 // @ts-ignore
-import GET_POPULAR_BREEDS from "../apollo/queries/get-popular-breeds.gql";
+import GET_POPULAR_BREEDS from "@/apollo/queries/get-popular-breeds.gql";
 import usePopularBreedsStyles from "@/components/PopularBreeds/usePopularBreedsStyles";
 
 const Popular = () => {
