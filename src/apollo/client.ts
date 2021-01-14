@@ -6,7 +6,8 @@ import {
   NormalizedCacheObject
 } from "@apollo/client";
 import CatsAPI from "./datasources/cats-api";
-import { Db } from "mongodb";
+import type { Db } from "mongodb";
+import merge from "deep-merge";
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
@@ -73,7 +74,18 @@ export function initializeApollo(
   // If your page has Next.js data fetching methods that use Apollo Client, the initial state
   // gets hydrated here
   if (initialState) {
-    _apolloClient.cache.restore(initialState);
+    // Get existing cache, loaded during client side data fetching
+    const existingCache = _apolloClient.extract();
+
+    if (Object.keys(existingCache).length) {
+      // Merge the existing cache into data passed from getStaticProps/getServerSideProps
+      const data = merge(initialState, existingCache);
+
+      // Restore the cache with the merged data
+      _apolloClient.cache.restore(data);
+    } else {
+      _apolloClient.cache.restore(initialState);
+    }
   }
   // For SSG and SSR always create a new Apollo Client
   if (typeof window === "undefined") return _apolloClient;
