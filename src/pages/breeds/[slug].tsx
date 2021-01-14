@@ -26,10 +26,15 @@ const Breed = () => {
   const [incrementSearchCount] = useIncrementSearchCountMutation();
 
   useEffect(() => {
-    (async () =>
-      await incrementSearchCount({
-        variables: { name: breedName }
-      }))();
+    (async () => {
+      try {
+        await incrementSearchCount({
+          variables: { name: breedName }
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    })();
   }, []);
 
   return (
