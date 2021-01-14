@@ -75,18 +75,10 @@ export function initializeApollo(
   // gets hydrated here
   if (initialState) {
     // Get existing cache, loaded during client side data fetching
-    const existingCache = _apolloClient.extract();
-
-    if (Object.keys(existingCache).length) {
-      // Merge the existing cache into data passed from getStaticProps/getServerSideProps
-      const data = merge(initialState, existingCache);
-
-      // Restore the cache with the merged data
-      _apolloClient.cache.restore(data);
-    } else {
-      _apolloClient.cache.restore(initialState);
-    }
+    console.log({ initialState });
+    _apolloClient.cache.restore(initialState);
   }
+
   // For SSG and SSR always create a new Apollo Client
   if (typeof window === "undefined") return _apolloClient;
   // Create the Apollo Client once in the client
